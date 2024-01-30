@@ -1,0 +1,411 @@
+#main {
+	padding: 10px 60px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	line-height: 1.65;
+	color: #555;
+}
+
+#recipe-title {
+	font-size: 28px;
+}
+
+#author-and-tags {
+	font-size: 14px;
+}
+
+#recipe-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 15px;
+}
+
+#recipe-info > h1 {
+	padding: 0px 10px 10px;
+}
+
+#like-button-and-photo-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+#like-license-buttons {
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	width: 60%;
+}
+
+#like-button {
+	background-color: #f6f6f6;
+	border: 0.5px solid #dedede;
+	border-radius: 5px;
+	width: 100px;
+	height: 40px;
+	font-size: 16px;
+}
+#like-button:hover {
+	background-color: #dedede;
+	cursor: pointer;
+}
+
+#like-button:hover .fas {
+	color: orange;
+}
+
+#likes-display {
+	font-size: 16px;
+}
+
+#fasComments {
+	color: #dedede;
+	padding-right: 6px;
+}
+
+#recipe-images {
+	display: flex;
+	width: 100%;
+	padding-bottom: 30px;
+}
+
+#author-info {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 50%;
+	/* height: 240px; */
+	border: 1px solid lightgrey;
+	border-radius: 6px;
+	background-color: #f6f6f6;
+	font-size: 14px;
+	margin: 20px;
+	position: relative;
+	left: 25%;
+}
+
+#top-author-info {
+	display: flex;
+	flex-wrap: wrap;
+	width: 97%;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#author-image {
+	width: 90px;
+	height: 90px;
+	margin-left: 3px;
+}
+
+.profileCircleRecipe {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 100%;
+	padding: 5px 15px;
+}
+
+#more-by-author {
+	display: flex;
+}
+
+#other-recipes-by-author {
+	padding-left: 10px;
+}
+
+#author-bio-container {
+	width: 110%;
+	padding: 10px 0px 5px 20px;
+	margin-top: 5px;
+}
+
+#recipe-description {
+	padding: 20px;
+	width: 48%;
+	position: relative;
+	left: 25%;
+}
+li#ingredient {
+	margin-bottom: 30px;
+}
+
+#comment-button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 50px;
+}
+
+#centering-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#comment-button {
+	border: none;
+	font-size: 16px;
+	background-color: white;
+	color: #333;
+	position: relative;
+
+}
+
+#comment-button:after {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	content: "";
+	width: 100%;
+	padding-top: 20px;
+	border-bottom: 2px solid #dedede;
+}
+
+#comment-button > .fas {
+	color: #bbb;
+}
+
+#comment-button:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#comment-button:hover .fas {
+	color: orange;
+}
+
+/* .fas {
+  color: #dedede;
+  padding-right: 6px;
+} */
+#likeButton {
+	color: #dedede;
+	padding-right: 6px;
+}
+
+#ingredients-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#ingredients-title {
+	font-size: 30px;
+	padding-bottom: 50px;
+}
+
+#ingredients-title:after {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	content: "";
+	width: 100%;
+	padding-top: 20px;
+	border-bottom: 2px solid #dedede;
+}
+
+
+#add-comment-box {
+	background-color: #f6f6f6;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	height: 200px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+}
+
+#user-image {
+	width: 70px;
+	height: 70px;
+}
+
+#inner-white-box {
+	background-color: white;
+  width: 80%;
+	height: 55%;
+	border: 1px solid #dedede;
+	display: flex;
+	justify-content: center;
+	border-radius: 5px;
+}
+
+#inner-white-box::before {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: 17px solid #97C6E3;
+	border-left: 16px solid transparent;
+	border-right: 16px solid transparent;
+	top: -1px;
+	left: -17px;
+
+}
+#bottom-of-the-white-box {
+	display: flex;
+	width: 90%;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#comment-note {
+	font-size: 12px;
+	color: #999
+}
+
+#post-comment-button {
+	background-color: white;
+	border: 1px solid #dedede;
+	border-radius: 5px;
+	height: 78%;
+	width: 30%;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #999;
+	font-size: 14px;
+}
+
+#post-comment-button:hover {
+	cursor: pointer;
+	border: .1px solid #999;
+	color: #555;
+}
+
+#post-comment-button:hover #fasComments {
+	color: orange;
+}
+
+#fasComments {
+	font-size: 22px;
+	position: relative;
+	bottom: 10%;
+}
+
+#little-post-comment-button {
+	background-color: #faac18;
+	border: 1px solid #e5991e;
+	border-radius: 5px;
+	height: 40px;
+	width: 50px;
+	color: white;
+	opacity: .65;
+}
+
+
+#little-post-comment-button:hover {
+	cursor: pointer;
+	background-color: rgb(236, 153, 0);
+}
+
+
+#comment-profileCircle {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}
+
+#comments-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+	position: relative;
+	left: 25%;
+}
+
+#comments-section > h1 {
+	padding: 40px;
+	border-bottom: 0.5px solid #dedede;
+	width: 100%;
+	text-align: center;
+	font-size: 28px;
+}
+
+#comment {
+	display: flex;
+	flex-wrap: wrap;
+	border-bottom: 0.5px solid #dedede;
+	width: 100%;
+	padding: 10px;
+	margin: 10px;
+	font-size: 16px;
+}
+
+#owner-name-and-buttons-container {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+#comment-image-username-date {
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+  margin-bottom: 25px;
+  justify-content: flex-start;
+}
+
+#comment-date {
+	margin: 0;
+	padding-left: 5px;
+}
+
+
+.commentButtons {
+	border: none;
+	background-color: #f6f6f6;
+	border-radius: 5px;
+	padding: 5px;
+	margin-left: 10px;
+  color: #333;
+	width: 60px;
+}
+
+
+.commentButtons:hover {
+    box-shadow: 0px 0px 3px 2px lightgrey;
+}
+
+
+#comment-owner-image {
+    width: 80px;
+    height: 80px;
+}
+
+#comment-owner-username {
+    font-weight: 600;
+
+}
+
+#by-username {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #555;
+	font-weight: 700;
+  font-size: 16px;
+	margin-right: auto;
+	margin-left: 5px;
+}
+
+#by-prefix {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #777;
+  font-size: 14px;
+	margin-left: 25px;
+	margin-top: 1px;
+}

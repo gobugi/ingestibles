@@ -1,0 +1,125 @@
+#profPic {
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 2px 1px rgba(83, 83, 81, 0.466);
+    margin-bottom: 15px;
+    
+}
+
+.wholeProfile {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.profileBox {
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    border: none;
+    padding: 25px;
+    background-color:#FAD7BB;
+    width: 50%;
+    box-shadow: 0px 0px 3px 2px lightgrey;
+    border-radius: 10px;
+    margin: 3%
+}
+
+.profileData {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 25px;
+    overflow-wrap: normal;
+}
+
+.profileDataPic {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    border-bottom: 4px double grey;
+}
+
+.editButtons {
+    margin-left: 25px;
+    height: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    box-shadow: 0px 0px 2px 1px rgba(190, 187, 187, 0.397);
+    border: none;
+    background-color: rgba(206, 199, 185, 0.205);
+    border-radius: 5px;
+    padding: 3px;
+    color: grey;
+    margin-bottom: 10px;
+
+}
+
+.editButtons:hover {
+    cursor: pointer;
+    color: #F27D21;
+    box-shadow: 0px 0px 3px 2px lightgrey;
+}
+
+.deleteAccount {
+    justify-self: right;
+    margin-left: 25px;
+    height: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    box-shadow: 0px 0px 2px 1px rgba(128, 128, 128, 0.226);
+    border: none;
+    background-color: rgba(185, 19, 19, 0.877);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.deleteAccount:hover {
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>😰</text></svg>") 16 0,auto; /*!emojicursor.app*/
+    background-color: darkred;
+    box-shadow: 0px 0px 3px 2px rgb(211, 18, 18);
+}
+
+.saveButton {
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    color: green;
+    font-weight: 600;
+}
+
+.cancelButton {
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    color: red;
+}
+
+.editProfInput {
+    height: 30px;
+    border-radius: 5px;
+    border: 2px outset rgba(255, 166, 0, 0.397);
+    box-shadow: 0px 0px 2px 1px rgba(128, 128, 128, 0.432);
+    font-size: 18px;
+}
+
+.editProfBio {
+    height: 150px;
+    width: 350px;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.cancelButton:hover{
+    cursor: pointer;
+}
+
+.saveButton:hover{
+    cursor:pointer
+}
