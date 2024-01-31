@@ -1,4 +1,5 @@
-from app.models import db, Recipe
+from app.models import db, Recipe, environment, SCHEMA
+from sqlalchemy.sql import text
 
 
 # Adds recipes
@@ -292,4 +293,15 @@ The first version I made used chocolate graham crackers but then I tried Keebler
 # dependent entities
 def undo_recipes():
     db.session.execute('TRUNCATE recipes RESTART IDENTITY CASCADE;')
+    db.session.commit()
+
+
+
+
+def undo_recipes():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.recipes RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM recipes"))
+        
     db.session.commit()

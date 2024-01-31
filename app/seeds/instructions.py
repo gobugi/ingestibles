@@ -1,4 +1,5 @@
-from app.models import db, Instruction
+from app.models import db, Instruction, environment, SCHEMA
+from sqlalchemy.sql import text
 
 
 # Adds instructions
@@ -1686,5 +1687,9 @@ Set up a production line and you’ll have a plate of bats in no time!''')
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_instructions():
-    db.session.execute('TRUNCATE instructions RESTART IDENTITY CASCADE;')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.instructions RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM instructions"))
+        
     db.session.commit()

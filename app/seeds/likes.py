@@ -1,4 +1,5 @@
-from app.models import db, Like
+from app.models import db, Like, environment, SCHEMA
+from sqlalchemy.sql import text
 
 
 # Adds like
@@ -132,5 +133,9 @@ def seed_likes():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_likes():
-    db.session.execute('TRUNCATE likes RESTART IDENTITY CASCADE;')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.likes RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM likes"))
+        
     db.session.commit()

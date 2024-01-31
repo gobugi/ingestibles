@@ -1,4 +1,5 @@
-from app.models import db, Media
+from app.models import db, Media, environment, SCHEMA
+from sqlalchemy.sql import text
 
 
 # Adds media
@@ -332,5 +333,9 @@ def seed_media():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_media():
-    db.session.execute('TRUNCATE media RESTART IDENTITY CASCADE;')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.media RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM media"))
+        
     db.session.commit()

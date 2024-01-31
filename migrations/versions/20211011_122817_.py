@@ -9,6 +9,11 @@ from alembic import op
 import sqlalchemy as sa
 
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
+
 # revision identifiers, used by Alembic.
 revision = '3a8a6ae94e88'
 down_revision = None
@@ -84,7 +89,17 @@ def upgrade():
     sa.ForeignKeyConstraint(['recipeId'], ['recipes.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    # ### end Alembic commands ###
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE recipes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE ingredients SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE instructions SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE media SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE tags SET SCHEMA {SCHEMA};")
+    # ### end Alembic commands ###qqqqqqqqq
 
 
 def downgrade():

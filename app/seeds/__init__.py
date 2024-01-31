@@ -8,6 +8,7 @@ from .tags import seed_tags, undo_tags
 from .likes import seed_likes, undo_likes
 from .media import seed_media, undo_media
 
+from app.models.db import db, environment, SCHEMA
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -16,7 +17,16 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    seed_users()
+    if environment == 'production':
+        undo_users()
+        undo_recipes()
+        undo_tags()
+        undo_comments()
+        undo_instructions()
+        undo_ingredients()
+        undo_likes()
+        undo_media()
+    user = seed_users()
     seed_recipes()
     seed_tags()
     seed_comments()

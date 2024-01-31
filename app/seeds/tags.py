@@ -1,4 +1,5 @@
-from app.models import db, Tag
+from app.models import db, Tag, environment, SCHEMA
+from sqlalchemy.sql import text
 
 
 # Adds tags
@@ -281,5 +282,9 @@ def seed_tags():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_tags():
-    db.session.execute('TRUNCATE tags RESTART IDENTITY CASCADE;')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.tags RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM tags"))
+        
     db.session.commit()

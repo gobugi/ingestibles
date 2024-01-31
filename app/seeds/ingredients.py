@@ -1,5 +1,5 @@
-from app.models import db, Ingredient
-
+from app.models import db, Ingredient, environment, SCHEMA
+from sqlalchemy.sql import text
 
 # Adds ingredients
 def seed_ingredients():
@@ -1425,5 +1425,9 @@ def seed_ingredients():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_ingredients():
-    db.session.execute('TRUNCATE ingredients RESTART IDENTITY CASCADE;')
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.ingredients RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM ingredients"))
+        
     db.session.commit()

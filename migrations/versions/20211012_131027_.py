@@ -9,6 +9,11 @@ from alembic import op
 import sqlalchemy as sa
 
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
+
 # revision identifiers, used by Alembic.
 revision = '3b52da6cecd7'
 down_revision = 'fda409190198'
@@ -22,7 +27,10 @@ def upgrade():
     op.add_column('comments', sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True))
     op.add_column('users', sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True))
     op.add_column('users', sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True))
-    # ### end Alembic commands ###
+    if environment == "production":
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+    # ### end Alembic commands ###qqqqqqqqq
 
 
 def downgrade():
