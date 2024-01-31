@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3a8a6ae94e88
+Revision ID: 54a12b0b9a3c
 Revises: 
-Create Date: 2021-10-11 12:28:17.079033
+Create Date: 2024-01-31 03:02:37.824620
 
 """
 from alembic import op
@@ -15,7 +15,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '3a8a6ae94e88'
+revision = '54a12b0b9a3c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,7 +30,7 @@ def upgrade():
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('biography', sa.Text(), nullable=True),
     sa.Column('profilePic', sa.String(), nullable=True),
-    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -40,20 +40,20 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
-    sa.Column('authorId', sa.Integer(), nullable=False),
     sa.Column('ingredientPhoto', sa.String(), nullable=False),
-    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
+    sa.Column('authorId', sa.Integer(), nullable=False),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['authorId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.Column('recipeId', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('comment', sa.Text(), nullable=False),
-    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
-    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['recipeId'], ['recipes.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -106,7 +106,7 @@ def upgrade():
         op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE media SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE tags SET SCHEMA {SCHEMA};")
-    # ### end Alembic commands ###qqqqqqqqq
+    # ### end Alembic commands ###
 
 
 def downgrade():
