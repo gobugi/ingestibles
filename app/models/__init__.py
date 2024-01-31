@@ -7,3 +7,4 @@ from .recipe import Recipe
 from .tag import Tag
 from .like import Like
 from .media import Media
+from .db import environment, SCHEMA

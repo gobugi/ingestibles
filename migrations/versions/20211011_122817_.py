@@ -29,7 +29,9 @@ def upgrade():
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('biography', sa.Text(), nullable=True),
-    sa.Column('profilePic', sa.String(length=255), nullable=True),
+    sa.Column('profilePic', sa.String(), nullable=True),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
+    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -39,6 +41,9 @@ def upgrade():
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('authorId', sa.Integer(), nullable=False),
+    sa.Column('ingredientPhoto', sa.String(), nullable=False),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
+    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['authorId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -47,6 +52,8 @@ def upgrade():
     sa.Column('recipeId', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('comment', sa.Text(), nullable=False),
+    sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
+    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['recipeId'], ['recipes.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -63,7 +70,7 @@ def upgrade():
     sa.Column('recipeId', sa.Integer(), nullable=False),
     sa.Column('imageUrl', sa.String(), nullable=True),
     sa.Column('stepTitle', sa.String(), nullable=False),
-    sa.Column('directions', sa.Text(), nullable=True),
+    sa.Column('directions', sa.Text(), nullable=False),
     sa.ForeignKeyConstraint(['recipeId'], ['recipes.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -78,7 +85,7 @@ def upgrade():
     op.create_table('media',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('recipeId', sa.Integer(), nullable=False),
-    sa.Column('mediaUrl', sa.String(), nullable=True),
+    sa.Column('mediaUrl', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['recipeId'], ['recipes.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
