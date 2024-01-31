@@ -719,3 +719,7 @@ a:hover {
 #home-container {
   margin-bottom: 20px;
 }
+
+.ls-is-cached {
+  object-fit: cover;
+}

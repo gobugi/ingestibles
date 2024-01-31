@@ -14,3 +14,7 @@
 .home-content-explore-category-previous > .home-content-explore-link > h3 > span:hover {
   cursor: default !important;
 }
+
+.ls-is-cached {
+  object-fit: cover;
+}
