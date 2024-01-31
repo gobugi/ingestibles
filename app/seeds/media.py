@@ -156,7 +156,7 @@ def seed_media():
     jamiMedia12 = Media(
             mediaUrl='https://content.instructables.com/ORIG/FDZ/Y6IE/KQ57CP1P/FDZY6IEKQ57CP1P.jpg?auto=webp&frame=1&width=1024&height=1024&fit=bounds&md=43b30bcaef18846b343ac68de17bf6ab', recipeId=23)
     jamiMedia13 = Media(
-            mediaUrl='https://content.instructables.com/ORIG/FG5/OBDL/KNG1B6DK/FG5OBDLKNG1B6DK.jpg?auto=webp&frame=1&crop=2:3&width=467&height=1024&fit=bounds&md=bb646e2bb222387898a36d947099cc9b', recipeId=24)
+            mediaUrl='https://en.petitchef.com/imgupl/recipe/tartine-bakery-s-mourning-buns--md-270016p438417.jpg', recipeId=24)
     jamiMedia14 = Media(
             mediaUrl='https://content.instructables.com/ORIG/FOD/L6S3/KNG1B6DJ/FODL6S3KNG1B6DJ.jpg?auto=webp&frame=1&crop=2:3&width=467&height=1024&fit=bounds&md=affa06ff996b834e79956a78c910ad81', recipeId=24)
     jamiMedia15 = Media(
