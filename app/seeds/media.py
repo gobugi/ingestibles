@@ -53,10 +53,10 @@ def seed_media():
         mediaUrl='https://content.instructables.com/ORIG/FJA/9F3T/IUHMTP3Q/FJA9F3TIUHMTP3Q.jpg?auto=webp&frame=1&width=600&height=1024&fit=bounds&md=7af9fa915eb0cb131ddc5d28b9328fca', recipeId=10)
 
 
-    media718 = Media(
-        mediaUrl='https://ingestiblesapp.s3.amazonaws.com/f0ff7a6f834c42238c085fe91f3022fc.mp4', recipeId=1)
-    media719 = Media(
-        mediaUrl='https://ingestiblesapp.s3.amazonaws.com/f0ff7a6f834c42238c085fe91f3022fc.mp4', recipeId=4)
+    # media718 = Media(
+    #     mediaUrl='https://ingestiblesapp.s3.amazonaws.com/f0ff7a6f834c42238c085fe91f3022fc.mp4', recipeId=1)
+    # media719 = Media(
+    #     mediaUrl='https://ingestiblesapp.s3.amazonaws.com/f0ff7a6f834c42238c085fe91f3022fc.mp4', recipeId=4)
 
 
 
@@ -242,8 +242,8 @@ def seed_media():
     db.session.add(media716)
     db.session.add(media717)
 
-    db.session.add(media718)
-    db.session.add(media719)
+    # db.session.add(media718)
+    # db.session.add(media719)
 
 
     db.session.add(media5011)
