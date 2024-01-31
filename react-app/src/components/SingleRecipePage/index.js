@@ -195,7 +195,7 @@ const SingleRecipePage = () => {
             >{
                 !isVideo(el) && <img
                   key={`recipePhoto${i}`}
-                  style={{ width: '400px', height: '400px', borderRadius: '7px' }}
+                  style={{ width: '400px', height: '400px', borderRadius: '7px', objectFit: 'cover' }}
                   src={el} alt='RecipePhoto' />}
             </div>
           ))}
