@@ -11,12 +11,13 @@ class User(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     biography = db.Column(db.Text, nullable=True)
-    profilePic = db.Column(db.String(), nullable=True)
+    profilePic = db.Column(db.String, nullable=True)
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
     time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())
     comments = db.relationship('Comment', back_populates='user', cascade="all, delete")
