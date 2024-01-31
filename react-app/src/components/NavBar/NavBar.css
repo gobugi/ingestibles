@@ -760,4 +760,5 @@ a:hover {
 
 .searchResultsContainer {
     position: absolute;
+    background-color: #eee;
 }

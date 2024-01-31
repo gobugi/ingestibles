@@ -25,11 +25,15 @@ const NavBar = ({ loaded }) => {
   const clickToSearch = async (e) => {
     // e.preventdefault()
     // console.log('e.target.value', e.target.value)
-    setSearchTerm(e.target.value);
-    const response = await fetch(`/api/search/${e.target.value}`);
-    const responseData = await response.json();
-    // console.log("!!!!click-responseData", responseData);
-    setRecipes(responseData.recipes);
+    if (e.target.value === searchTerm) {
+      setSearchTerm("");
+    } else {
+      setSearchTerm(e.target.value);
+      const response = await fetch(`/api/search/${e.target.value}`);
+      const responseData = await response.json();
+      // console.log("!!!!click-responseData", responseData);
+      setRecipes(responseData.recipes);
+    }
   };
   // click on cancel search button to clear search results
   const clearClickToSearch = async (e) => {
@@ -166,6 +170,30 @@ const NavBar = ({ loaded }) => {
         </div>
         {loaded && sessionLinks}
       </div>
+      {searchTerm ? (
+        <div className="searchResultsContainerParent">
+          <div className="searchResultsContainer">
+            <h1 className="plateHeadings">Search results for: </h1>
+            <h2 className="searchTerm" style={{ display: "inline" }}>
+              {searchTerm}
+            </h2>
+            <button
+              style={{
+                marginLeft: "28px",
+                marginTop: "2px",
+                padding: "3px",
+                color: "#2196F2",
+                display: "inline",
+              }}
+              className="btn-category-header"
+              onClick={clearClickToSearch}
+            >
+              Clear results
+            </button>
+            <ul className="searchedRecipes">{searchBlock}</ul>
+          </div>
+        </div>
+      ) : null}
       <div className="site-header-bottom">
         <div className="left-col">
           <NavLink to="/">
@@ -220,30 +248,6 @@ const NavBar = ({ loaded }) => {
           </form>
         </div>
       </div>
-      {searchTerm ? (
-        <div className="searchResultsContainerParent">
-          <div className="searchResultsContainer">
-            <h1 className="plateHeadings">Search results for: </h1>
-            <h2 className="searchTerm" style={{ display: "inline" }}>
-              {searchTerm}
-            </h2>
-            <button
-              style={{
-                marginLeft: "28px",
-                marginTop: "2px",
-                padding: "3px",
-                color: "#2196F2",
-                display: "inline",
-              }}
-              className="btn-category-header"
-              onClick={clearClickToSearch}
-            >
-              Clear results
-            </button>
-            <ul className="searchedRecipes">{searchBlock}</ul>
-          </div>
-        </div>
-      ) : null}
     </header>
   );
 };
