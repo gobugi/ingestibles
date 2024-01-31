@@ -757,3 +757,7 @@ a:hover {
     margin-left: 50px;
     color: orange;
 }
+
+.searchResultsContainer {
+    position: absolute;
+}

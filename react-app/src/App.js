@@ -15,6 +15,16 @@ import EditRecipe from "./components/EditRecipe/EditRecipe"
 import Recipes from './components/Recipes/Recipes';
 import Footer from './components/Footer/Footer';
 
+const ScrollToTop = (props) => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return <>{props.children}</>;
+};
+
+
 function App() {
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
@@ -31,48 +41,50 @@ function App() {
 	}
 
 	return (
-		<BrowserRouter>
-			<NavBar loaded={loaded} />
-			{loaded && (
-				<Switch>
-					<Route path="/" exact={true}>
-						<Homepage />
-					</Route>
-					<Route path="/login" exact={true}>
-						<LoginForm />
-					</Route>
-					<Route path="/sign-up" exact={true}>
-						<SignUpForm />
-					</Route>
-					<ProtectedRoute path="/recipes/my_plate" exact={true}>
-						<MyPlate />
-					</ProtectedRoute>
-					<ProtectedRoute path="/users/:userId" exact={true}>
-						<Profile />
-					</ProtectedRoute>
-					<ProtectedRoute path="/recipes/new_recipe" exact={true}>
-						<CreateRecipe />
-					</ProtectedRoute>
-					<ProtectedRoute path="/recipes/edit/:recipeId" exact={true}>
-						<EditRecipe />
-					</ProtectedRoute>
-					<ProtectedRoute path="/" exact={true}>
-						<h1>My Home Page</h1>
-					</ProtectedRoute>
-					<Route path='/recipes/:recipeId' exact={true}>
-          	<SingleRecipePage />
-        	</Route>
-					<Route path="/recipes" exact={true}>
-						<Recipes />
-					</Route>
-          <Route path="/tags/:tagName" exact={true}>
-						<Recipes />
-					</Route>
-				</Switch>
-			)}
-			<Footer />
-		</BrowserRouter>
-	);
+    <BrowserRouter>
+      <NavBar loaded={loaded} />
+      {loaded && (
+        <ScrollToTop>
+          <Switch>
+            <Route path="/" exact={true}>
+              <Homepage />
+            </Route>
+            <Route path="/login" exact={true}>
+              <LoginForm />
+            </Route>
+            <Route path="/sign-up" exact={true}>
+              <SignUpForm />
+            </Route>
+            <ProtectedRoute path="/recipes/my_plate" exact={true}>
+              <MyPlate />
+            </ProtectedRoute>
+            <ProtectedRoute path="/users/:userId" exact={true}>
+              <Profile />
+            </ProtectedRoute>
+            <ProtectedRoute path="/recipes/new_recipe" exact={true}>
+              <CreateRecipe />
+            </ProtectedRoute>
+            <ProtectedRoute path="/recipes/edit/:recipeId" exact={true}>
+              <EditRecipe />
+            </ProtectedRoute>
+            <ProtectedRoute path="/" exact={true}>
+              <h1>My Home Page</h1>
+            </ProtectedRoute>
+            <Route path="/recipes/:recipeId" exact={true}>
+              <SingleRecipePage />
+            </Route>
+            <Route path="/recipes" exact={true}>
+              <Recipes />
+            </Route>
+            <Route path="/tags/:tagName" exact={true}>
+              <Recipes />
+            </Route>
+          </Switch>
+        </ScrollToTop>
+      )}
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
 export default App;
