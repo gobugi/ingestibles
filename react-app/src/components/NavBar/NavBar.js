@@ -170,28 +170,6 @@ const NavBar = ({ loaded }) => {
         </div>
         {loaded && sessionLinks}
       </div>
-      {searchTerm ? (
-        <div className="searchResultsContainer">
-          <h1 className="plateHeadings">Search results for: </h1>
-          <h2 className="searchTerm" style={{ display: "inline" }}>
-            {searchTerm}
-          </h2>
-          <button
-            style={{
-              marginLeft: "28px",
-              marginTop: "2px",
-              padding: "3px",
-              color: "#2196F2",
-              display: "inline",
-            }}
-            className="btn-category-header"
-            onClick={clearClickToSearch}
-          >
-            Clear results
-          </button>
-          <ul className="searchedRecipes">{searchBlock}</ul>
-        </div>
-      ) : null}
       <div className="site-header-bottom">
         <div className="left-col">
           <NavLink to="/">
@@ -246,6 +224,28 @@ const NavBar = ({ loaded }) => {
           </form>
         </div>
       </div>
+      {searchTerm ? (
+        <div className="searchResultsContainer">
+          <h1 className="plateHeadings">Search results for: </h1>
+          <h2 className="searchTerm" style={{ display: "inline" }}>
+            {searchTerm}
+          </h2>
+          <button
+            style={{
+              marginLeft: "28px",
+              marginTop: "2px",
+              padding: "3px",
+              color: "#2196F2",
+              display: "inline",
+            }}
+            className="btn-category-header"
+            onClick={clearClickToSearch}
+          >
+            Clear results
+          </button>
+          <ul className="searchedRecipes">{searchBlock}</ul>
+        </div>
+      ) : null}
     </header>
   );
 };
