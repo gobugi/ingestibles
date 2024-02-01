@@ -169,6 +169,7 @@ body { margin: 0; padding: 0; background-color: white; max-width: 100%; overflow
     line-height: 20px;
     color: #eee;
     background-color: #eee;
+    height: 86px;
 }
 
 .site-header-bottom .left-col {
@@ -760,5 +761,9 @@ a:hover {
 
 .searchResultsContainer {
     position: absolute;
-    background-color: #eee;
+    background-color:#eee;
+    margin-top: 0;
+    width: 100%; 
+    z-index: 1;
+    padding-bottom: 60px;
 }
